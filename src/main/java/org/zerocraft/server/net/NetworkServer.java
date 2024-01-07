@@ -39,6 +39,9 @@ public class NetworkServer {
 						
 						Thread.sleep(1);
 					} catch (Exception ex) {
+						if (!NetworkServer.this.isListening) {
+							return;
+						}
 						logger.severe("Failed to accept a connection: " + 
 								Utils.getThrowableStackTraceAsStr(ex));
 					}

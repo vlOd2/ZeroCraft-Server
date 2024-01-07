@@ -149,17 +149,13 @@ public class ZeroCraftServer implements Runnable {
 			this.saveLevel(this.level);
 		}
 		
-		if (this.cliScanner != null) {
-			this.cliScanner.close();
-		}
-		
 		if (this.networkServer != null) {
 			try {
 				this.networkServer.stop();
 			} catch (Exception ex) {
 			}
 		}
-		
+
 		if (this.console != null) {
 			this.console.hide();
 		}
