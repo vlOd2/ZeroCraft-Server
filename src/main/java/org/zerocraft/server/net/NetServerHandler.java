@@ -127,7 +127,7 @@ public class NetServerHandler extends NetBaseHandler {
 			this.currentLevel.entities.remove(this.playerEntity);
 			this.sendPacketToOthers(new PacketPlayerLeave(this.playerEntity.playerID));
 			this.instance.sendGlobalChatMessage(
-					String.format("%s changed level: %s -> %s", this.userName, this.currentLevel.name, level.name));
+					String.format("&8(&d!&8)&e %s &achanged level&7: &c%s &8-> &b%s", this.userName, this.currentLevel.name, level.name));
 			this.logger.info("%s is changing the level from \"%s\" to \"%s\"", this, this.currentLevel.name,
 					level.name);
 		}

@@ -50,6 +50,7 @@ public class ZeroCraftServer implements Runnable {
 	private Object playerIDLookupLock = new Object();
 	public Timer timer = new Timer(20.0F);
 	public Level level;
+	public Level level2;
 	public LevelIO levelIO = new LevelIO();
 
 	static {
@@ -147,6 +148,7 @@ public class ZeroCraftServer implements Runnable {
 		this.running = false;
 		if (this.level != null) {			
 			this.saveLevel(this.level);
+			this.saveLevel(this.level2);
 		}
 		
 		if (this.networkServer != null) {
@@ -196,6 +198,12 @@ public class ZeroCraftServer implements Runnable {
 			if (this.level == null) {
 				this.level = this.generateLevel("Main", 256, 64, 256);
 				this.saveLevel(this.level);
+			}
+			
+			this.level2 = this.loadLevel("Main2");
+			if (this.level2 == null) {
+				this.level2 = this.generateLevel("Main2", 256, 64, 256);
+				this.saveLevel(this.level2);
 			}
 			
 			logger.info("Initialized! Listening on %s:%d...", MainConfig.instance.listenIP,
@@ -365,7 +373,7 @@ public class ZeroCraftServer implements Runnable {
 
 		try {
 			File file = new File(String.format("%s.dat", level.name.toLowerCase().replace(" ", "_")));
-			LevelIO.save(this.level, new FileOutputStream(file));
+			LevelIO.save(level, new FileOutputStream(file));
 		} catch (Exception ex) {
 			ZeroCraftServer.logger.throwable(ex);
 		}

@@ -9,6 +9,7 @@ import org.zerocraft.server.Utils;
 import org.zerocraft.server.ZeroCraftServer;
 import org.zerocraft.server.consolehandler.commands.CmdBan;
 import org.zerocraft.server.consolehandler.commands.CmdKick;
+import org.zerocraft.server.consolehandler.commands.CmdLevel;
 import org.zerocraft.server.consolehandler.commands.CmdSay;
 import org.zerocraft.server.consolehandler.commands.CmdStop;
 import org.zerocraft.server.consolehandler.commands.CmdUnban;
@@ -24,6 +25,7 @@ public class ConsoleHandler {
 		this.commands.add(new CmdUnban());
 		this.commands.add(new CmdKick());
 		this.commands.add(new CmdStop());
+		this.commands.add(new CmdLevel());
 	}
 
 	public void handleInput(String input, ConsoleCaller caller) {
